@@ -1,35 +1,61 @@
 name: Sugar Spark Android Debug APK
+
 on:
   workflow_dispatch:
   push:
-    branches: [main, master]
+    branches:
+      - main
+      - master
+
 jobs:
   build-debug-apk:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Sugar_Spark
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: actions/setup-java@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-      - uses: android-actions/setup-android@v4
+
       - name: Install Android SDK packages
-        run: sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
       - name: Install project dependencies
         run: npm install
+
       - name: Add Android platform
         run: npx cap add android
+
       - name: Sync Capacitor
         run: npx cap sync android
+
       - name: Build debug APK
-        run: cd android && ./gradlew assembleDebug
-      - name: Verify APK exists
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Verify APK
         run: test -f android/app/build/outputs/apk/debug/app-debug.apk
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: Sugar-Spark-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: Sugar_Spark/android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 14
