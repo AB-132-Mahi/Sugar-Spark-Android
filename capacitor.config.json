@@ -1,0 +1,6 @@
+{
+  "appId": "com.sugarspark.game",
+  "appName": "Sugar Spark",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}

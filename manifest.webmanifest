@@ -1,0 +1,11 @@
+{
+  "name": "Sugar Spark 2.0 — Candy Adventure",
+  "short_name": "Sugar Spark",
+  "description": "A sweet Match-3 candy adventure",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4e8ff",
+  "theme_color": "#8a6be0",
+  "icons": []
+}

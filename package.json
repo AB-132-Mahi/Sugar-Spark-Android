@@ -1,0 +1,21 @@
+{
+  "name": "sugar-spark-android",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Sugar Spark Match-3 mobile web game, Capacitor Android wrapper setup",
+  "scripts": {
+    "test": "node tests.js",
+    "check": "node --check game.js && node tests.js",
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android",
+    "android:build:debug": "bash scripts/build-android-debug.sh"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.2.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/android": "^6.2.0"
+  }
+}

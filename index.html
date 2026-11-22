@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sugar Spark 2.0 — Candy Adventure</title>
+<meta name="theme-color" content="#8a6be0"><meta name="description" content="A sweet Match-3 candy adventure."><link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header><div class="brand"><span class="spark">✦</span><div><h1>Sugar Spark <span class="version">2.0</span></h1><small>Sweet little match adventures</small></div></div>
+<div class="top-actions"><button id="soundBtn" aria-label="Toggle sound">🔊</button><button id="resetBtn" title="Reset progress">↻</button></div></header>
+<main>
+<section class="panel game-panel">
+<div class="level-head"><div><span class="eyebrow">WORLD</span><strong id="worldNum">1</strong></div><div><span class="eyebrow">LEVEL</span><strong id="levelNum">1</strong></div><div class="goal"><span class="eyebrow">TARGET</span><strong id="target">500</strong></div><div class="moves"><span class="eyebrow">MOVES</span><strong id="moves">25</strong></div></div>
+<div class="progress"><div id="progressFill"></div></div>
+<div id="board" class="board" aria-label="Game board"></div>
+<div class="game-message" id="message">Swap candies to match 3 or more!</div>
+<div class="controls"><button id="shuffleBtn">Shuffle</button><button id="hintBtn">Hint</button></div>
+</section>
+<aside class="panel side">
+<div class="score-box"><span class="eyebrow">YOUR SCORE</span><strong id="score">0</strong><div class="stars" id="stars">☆☆☆</div></div>
+<h3>How to play</h3><ul><li>Swap adjacent candies to match 3.</li><li>Match 4 to make a striped candy.</li><li>Match 5 to create a color bomb.</li><li>Special candies trigger bigger blasts!</li></ul>
+<div class="best">Best score <strong id="best">0</strong></div>
+<h3 class="map-title">🍭 Candy trail</h3><p class="map-label" id="worldLabel">World 1 · Levels 1–30</p><div class="level-list" id="levelList" aria-label="Level map"></div>
+</aside>
+</main>
+<footer>Sugar Spark 2.0 · A sweet adventure, one match at a time</footer>
+</div>
+<div class="modal hidden" id="modal"><div class="modal-card"><div class="modal-icon" id="modalIcon">✨</div><h2 id="modalTitle">Level complete!</h2><p id="modalText"></p><div class="modal-stars" id="modalStars">☆☆☆</div><button id="modalBtn">Continue</button></div></div>
+<script>if("serviceWorker" in navigator && location.protocol !== "file:"){navigator.serviceWorker.register("service-worker.js").catch(()=>{});}</script><script src="game.js"></script>
+</body></html>
