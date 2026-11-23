@@ -30,7 +30,8 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Install Android SDK packages
+      - name: Setup Android SDK 
+      uses: android-actions/setup-android@v4 
         run: |
           sdkmanager --sdk_root="$ANDROID_HOME" "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
